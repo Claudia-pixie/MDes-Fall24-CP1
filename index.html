@@ -4,6 +4,16 @@
         <meta charset="utf-8">
         <title></title>
         <link rel="stylesheet" href="">
+        <script>
+          if (window.location.protocol === 'file:' || 
+            window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1') {
+              document.write('<base href="./">');
+          } else {
+              document.write('<base href="/MDes-Fall24-CP1/">');
+          }
+      </script>
+      <link rel="icon" href="./favicon/favicon.ico" type="image/x-icon">
     </head>
     <body>
         <h1>
@@ -63,6 +73,16 @@
                  --::- ---:: :-::-::----:    :=:--=====--------====--==========-:-------+@@@@@@@@*====-:------- 
                                                                                          :::                                                                                                                                                       
         </pre>
-
+        <ul>
+          <li>
+            <a href="Week2_ResponsivePage/index.html">Week 2 Responsive page</a>
+          </li>
+          <li>
+            <a href="Week3_JavaScriptPuzzle/index.html">Week 3 JavaScript Puzzle</a>
+          </li>
+          <li>
+            <a href="Week4_blender_lowpoly/index.html">Week 4 Low Poly Blender</a>
+          </li>
+        </ul>
     </body>
 </html>
