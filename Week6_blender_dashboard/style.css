@@ -1,0 +1,32 @@
+.prototype-image {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.prototype-image img {
+    flex: 1;
+    max-width: 49%;
+    margin: 5px;
+}
+main {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    background-color: blanchedalmond;
+    padding: 0.5rem;
+}
+p {
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+    margin: 15px;
+}
