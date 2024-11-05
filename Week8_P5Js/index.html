@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main>
+        <h1>My p5.js creation, Breathing Circles:</h1>
+        <p>
+            View in P5.js editor <a href="https://editor.p5js.org/chengfan.tang/sketches/H6q6ufaXg" target="_blank">P5.js creation</a>
+        </p>
+        <h2>
+            Problem: How to scale the pattern like a "breathing" effect?
+        </h2>
+        <p>
+            I created a pattern that has different colors of circles based on the x and y positions. I wanted to animate
+            the size changing of each circle, like a breathing effect.
+            <br>
+            <br>
+            To animate anything, I needed a change based on time. After going through the reference I found a variable
+            called frameCount that gives me a count of how many frames have been drawn. The most interesting part is to
+            figure out how to scale within a certain range, like 80% to 120% of size. After some Googling, I found out
+            that I can use the sin() function to make any number yield between -1 and 1(a good reminder of middle school
+            math). In order to achieve 0.8-1.2, I just needed to multiply the result by 0.2 and plus 1.
+            <br>
+            <br>
+            By doing this, I can make all circles to scale by frameCount. However, all the circles are scaling up and
+            down at them same time. It does make the breathing effect but I wanted to add some pattern in changing. I
+            first tried to make the scale change by each circle’s position, so I included x and y values in the
+            sinusoidal calculation, by simply adding x and y. This yields in scaling changing from the top left circle
+            to the bottom right circle. sin(frameCount/60 + x + y) * 0.2 + 1. But I wanted to make it something more
+            interesting. After some searching, I decided to use the distance of each circle to the center of the canvas,
+            which yielded an effect that changed circles by distance to the center.
+
+        </p>
+        <div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+            <iframe width="100%" height="100%" src="https://editor.p5js.org/chengfan.tang/full/H6q6ufaXg"
+                frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
+            </iframe>
+        </div>
+        
+    </main>
+</body>
+
+</html>
