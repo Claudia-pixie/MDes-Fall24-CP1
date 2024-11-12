@@ -1,0 +1,21 @@
+main {
+    margin: 0 2%;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 2rem;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    padding: .5rem;
+    background-color: black;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+img{
+    max-width: 80%;
+    height: auto;
+}
