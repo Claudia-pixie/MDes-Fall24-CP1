@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Week 12 p5js ml5js </title>
+</head>
+<body>
+    <main>
+        <br>
+        <h1>Bubble Popping</h1>
+        <div style="padding-bottom:56.25%; position:relative; display:block; width: 100%">
+            <iframe width="100%" height="100%" src="https://editor.p5js.org/chengfan.tang/full/1qxIw31rF"
+                frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
+            </iframe>
+        </div>
+
+        <br>
+
+        <h2>Ideation</h2>
+        <p>
+            The goal is to integrate machine learning(ml5.js) in p5.js to create an interactive prototype. Objects not physically connected to the computer should be used to interact with the system. My first idea is to make a interactive game using webcam and machine learning. I decided to make a bubble popping game that using hand gesture to pop the bubble and a scoring system. This uses the webcam and ml5.js to detect hand and using pinch gesture to pop the bubble.
+        </p>
+        <br>
+
+        <h2>Process</h2>
+        <img src="./assets/1.png" alt="">
+        <p>
+            1. I started by exploring the ml5.js capabilities and going through the examples. I found <a href="https://editor.p5js.org/ml5/sketches/DNbSiIYKB">HandPose Parts</a> example where it draws a green circle with pinch gesture and finger tip distance. I copied the code and modified it to flip the video. Instead of draw a circle with pinch distance as size, I created two small circles to track the index and thumb finger tips.
+        </p>
+        <br>
+
+        <img src="./assets/2.jpg" alt="">
+        <p>
+            2. I created bubble class with position and radius, and a display function to display it on canvas if the bubble is not popped. In the main canvas setup, I created bubbles randomly on the canvas. 
+        </p>
+        <br>
+
+        <img src="./assets/3.jpg" alt="">
+        <p>
+            3. The bubbles are created randomly on the canvas, but they can overlap, which is not ideal. I modified the bubble creation process to check the new bubble position with all existing bubbles using dist() to make sure they are not overlapping. In addition, I factored in the canvas edge so the bubble will not appear halway off the screen. A small trick I used here is to count how many times the bubble is trying to be created but failed. I found this helpful when trying to create large number of bubbles, but for smaller numbers like 20 or 25 it is probably not necessary.
+        </p>
+        <br>
+        
+        <img src="./assets/4.jpg" alt="">
+        <p>
+            4. In order to pop the bubble, I need a way to detect pinch gesture. I can calculate the distance between the index and thumb finger tips, and if the distance is smaller than a certain distance, the hand is pinching. I also need to make sure the pinching happens inside a bubble in order to pop, so I added a check to see if the center of the pinch gesture is inside a bubble. 
+        </p>
+        <br>
+
+        <img src="./assets/5.jpg" alt="">
+        <p>
+            5. It'd be more fun to continue adding new bubbles after popping one, so the game can go on. I use current time millis() and lastBubbleTime to keep track of the time. If the current time - lastBubbleTime is greater than a certain interval(3s in this case), a new bubble is created. I moved the code for the bubble creation to a new function addBubble(). During setup, I call addBubble() pre-determined times to create all the bubbles needed, and in the draw() function, I call addBubble() when the time interval is met.
+        </p>
+        <br>
+
+        <img src="./assets/6.jpg" alt="">
+        <p>
+            6. The bubbles are kind ugly because they are only white circles. To make them look better, I created layers. An outer rim using only stroke, the center bubble with a smaller circle and blue color, and a off-center circle as the highlight. I also made them a bit more colorful by using random filling color.
+        </p>
+        <br>
+
+        <h2>Reflection</h2>
+        <p>
+            Becuase we need to use ml5.js, this project is more like design around the technology. I first wanted to make a popping game using spoon and forks, fork to pop a bubble and spoon to push one. However, after training the model, I found the image classification is not alwasy accurate, so that the game might not be fun to play. Players would not want the spoon to be recognized as a fork when pushing the bubble around. But what's more important is that I found the ml5.js image classification does not give the position of the object, only the confidence score. This made it impossible to develop the game. I then switched to hand gesture and it supports the hand/finger key point position.
+        </p>
+        <br>
+
+    </main>
+</body>
+</html>
